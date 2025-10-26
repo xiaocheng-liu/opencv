@@ -1,7 +1,6 @@
 #include "opencv2/core.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
-#include <stdio.h>
 
 using namespace cv;
 
@@ -32,6 +31,7 @@ int main(int /* argc */, char** argv)
     imshow(wndname, image);
     waitKey(DELAY);
 
+    // 画直线或者带箭头的直线
     for (i = 0; i < NUMBER * 2; i++)
     {
         Point pt1, pt2;

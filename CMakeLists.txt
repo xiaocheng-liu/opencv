@@ -16,12 +16,13 @@ endif()
 include(cmake/OpenCVMinDepVersions.cmake)
 
 if(CMAKE_SYSTEM_NAME MATCHES WindowsPhone OR CMAKE_SYSTEM_NAME MATCHES WindowsStore)
-  cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+  cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
   #Required to resolve linker error issues due to incompatibility with CMake v3.0+ policies.
   #CMake fails to find _fseeko() which leads to subsequent linker error.
   #See details here: http://www.cmake.org/Wiki/CMake/Policies
   cmake_policy(VERSION 2.8)
 else()
+  #message("${MIN_VER_CMAKE}")
   cmake_minimum_required(VERSION "${MIN_VER_CMAKE}" FATAL_ERROR)
 endif()
 

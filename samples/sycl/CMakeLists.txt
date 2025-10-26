@@ -21,7 +21,7 @@ if(CMAKE_VERSION VERSION_LESS "3.5")
   return()
 endif()
 
-cmake_policy(VERSION 3.5)
+cmake_policy(VERSION 3.12)
 
 find_package(SYCL QUIET)  # will oneAPI support this straightforward way?
 
