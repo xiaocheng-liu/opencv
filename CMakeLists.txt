@@ -93,6 +93,11 @@ if(POLICY CMP0148)
   cmake_policy(SET CMP0148 OLD)  # CMake 3.27+: use CMake FindPythonInterp and FindPythonLib if available.
 endif()
 
+# 关闭 CMP0167 警告
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 OLD)
+endif()
+
 #
 # Configure OpenCV CMake hooks
 #

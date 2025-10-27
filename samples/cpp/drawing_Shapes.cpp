@@ -26,12 +26,12 @@ int main() {
 
     // 绘制三角形
     // 定义三角形的三个顶点
-    Point pts[3] = {Point(256, 100), Point(100, 400), Point(400, 400)};
+    Point pts[3] = {Point(256, 256), Point(128, 384), Point(256, 256)};
 
-    // 绘制三角形
+    // 填充三角形
     const Point* ppt[1] = {pts};
     int npt[] = {3};
-    polylines(img, ppt, npt, 1, true, Scalar(0, 0, 0), 2, LINE_AA); // 红色三角形
+    fillPoly(img, ppt, npt, 1, Scalar(0, 0, 255), LINE_AA); // 红色填充
 
     imshow("Drawing Shapes", img);
     waitKey(0);

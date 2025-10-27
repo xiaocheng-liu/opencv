@@ -96,4 +96,6 @@ int main(int argc, char* argv[])
         imshow("Stylization",img);
     }
     waitKey(0);
+
+    return 0;
 }
