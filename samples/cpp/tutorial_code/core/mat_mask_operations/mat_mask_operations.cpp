@@ -23,7 +23,7 @@ int main( int argc, char* argv[])
     help(argv[0]);
     const char* filename = argc >=2 ? argv[1] : "lena.jpg";
 
-    Mat src, dst0, dst1;
+    Mat src, dst0, dst1, dst2;
 
     if (argc >= 3 && !strcmp("G", argv[2]))
         src = imread( samples::findFile( filename ), IMREAD_GRAYSCALE);
@@ -37,7 +37,9 @@ int main( int argc, char* argv[])
     }
 
     namedWindow("Input", WINDOW_AUTOSIZE);
-    namedWindow("Output", WINDOW_AUTOSIZE);
+    namedWindow("Output-dst0", WINDOW_AUTOSIZE);
+    namedWindow("Output-dst1", WINDOW_AUTOSIZE);
+    namedWindow("Output-dst2", WINDOW_AUTOSIZE);
 
     imshow( "Input", src );
     double t = (double)getTickCount();
@@ -47,8 +49,7 @@ int main( int argc, char* argv[])
     t = ((double)getTickCount() - t)/getTickFrequency();
     cout << "Hand written function time passed in seconds: " << t << endl;
 
-    imshow( "Output", dst0 );
-    waitKey();
+    imshow( "Output-dst0", dst0 );
 
   //![kern]
     Mat kernel = (Mat_<char>(3,3) <<  0, -1,  0,
@@ -62,9 +63,17 @@ int main( int argc, char* argv[])
     filter2D( src, dst1, src.depth(), kernel );
   //![filter2D]
     t = ((double)getTickCount() - t)/getTickFrequency();
-    cout << "Built-in filter2D time passed in seconds:     " << t << endl;
+    cout << "dst1 Built-in filter2D time passed in seconds:     " << t << endl;
+    imshow( "Output-dst1", dst1 );
 
-    imshow( "Output", dst1 );
+    kernel = (Mat_<char>(3,3) <<  0, -1,  0,
+                             -1,  6, -1,
+                             0, -1,  0);
+    t = (double)getTickCount();
+    filter2D( src, dst2, src.depth(), kernel);
+    t = ((double)getTickCount()-t)/getTickFrequency();
+    cout << "dst2 Built-in filter2D time passed in seconds:     " << t << endl;
+    imshow("Output-dst2", dst2);
 
     waitKey();
     return EXIT_SUCCESS;
