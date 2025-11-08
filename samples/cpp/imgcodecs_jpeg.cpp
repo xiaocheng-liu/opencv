@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 
+#include "opencv2/highgui.hpp"
+#include "opencv2/viz/vizcore.hpp"
+
 using namespace std;
 using namespace cv;
 
@@ -78,5 +81,7 @@ int main(int /*argc*/, const char** /* argv */ )
     // Output framebuffer(as lossless).
     imwrite( "imgcodecs_jpeg_samplingfactor_result.png", framebuffer );
 
+    imshow("framebuffer", framebuffer);
+    waitKey(0);
     return 0;
 }
